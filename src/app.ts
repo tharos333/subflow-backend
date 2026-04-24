@@ -565,7 +565,11 @@ router.post('/webhooks/shopify', (req, res) => {
 // ══════════════════════════════════════════════════════════════
 const server = http.createServer(async (rawReq, rawRes) => {
   const [req, res] = enhance(rawReq, rawRes);
-
+if (rawReq.url === "/" && rawReq.method === "GET") {
+  rawRes.writeHead(200, { "Content-Type": "text/plain" });
+  rawRes.end("API is running 🚀");
+  return;
+}
   setCors(rawRes);
 
   // Handle CORS preflight
