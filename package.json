@@ -1,7 +1,7 @@
 {
   "name": "subflow-backend",
   "version": "1.0.0",
-  "description": "SubFlow — Shopify Subscription SaaS Backend",
+  "description": "SubFlow – Shopify Subscription SaaS Backend v2",
   "scripts": {
   "start": "node dist/app.js",
   "dev": "npx ts-node src/app.ts",
