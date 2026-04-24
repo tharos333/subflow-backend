@@ -1,0 +1,39 @@
+{
+  "name": "subflow-backend",
+  "version": "1.0.0",
+  "description": "SubFlow — Shopify Subscription SaaS Backend",
+  "scripts": {
+    "start":   "npx ts-node src/app.ts",
+    "dev":     "npx ts-node src/app.ts",
+    "build":   "tsc --noEmit"
+  },
+  "dependencies": {
+    "axios":              "^1.6.8",
+    "bcryptjs":           "^2.4.3",
+    "bullmq":             "^5.4.2",
+    "cors":               "^2.8.5",
+    "dotenv":             "^16.4.5",
+    "express":            "^4.19.2",
+    "express-rate-limit": "^7.2.0",
+    "helmet":             "^7.1.0",
+    "ioredis":            "^5.3.2",
+    "joi":                "^17.13.1",
+    "jsonwebtoken":       "^9.0.2",
+    "knex":               "^3.1.0",
+    "morgan":             "^1.10.0",
+    "pg":                 "^8.11.5",
+    "stripe":             "^15.5.0",
+    "winston":            "^3.13.0"
+  },
+  "devDependencies": {
+    "@types/bcryptjs":     "^2.4.6",
+    "@types/cors":         "^2.8.17",
+    "@types/express":      "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/morgan":       "^1.9.9",
+    "@types/node":         "^20.12.7",
+    "ts-node":             "^10.9.2",
+    "typescript":          "^5.4.5"
+  },
+  "engines": { "node": ">=18.0.0" }
+}
