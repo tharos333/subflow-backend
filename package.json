@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "SubFlow — Shopify Subscription SaaS Backend",
   "scripts": {
-    "start":   "npx ts-node src/app.ts",
-    "dev":     "npx ts-node src/app.ts",
-    "build":   "tsc --noEmit"
-  },
+  "start": "node dist/app.js",
+  "dev": "npx ts-node src/app.ts",
+  "build": "tsc"
+},
   "dependencies": {
     "axios":              "^1.6.8",
     "bcryptjs":           "^2.4.3",
