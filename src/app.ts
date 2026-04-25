@@ -224,7 +224,8 @@ router.get('/api/stripe/checkout', async (req, res) => {
       cancel_url: "https://example.com/cancel",
     });
 
-    res.json({ url: session.url });
+    res.writeHead(302, { Location: session.url! });
+res.end();
 
   } catch (err) {
     res.json({ error: "Stripe error" }, 500);
