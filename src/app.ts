@@ -28,7 +28,7 @@ function loadEnv() {
   }
 }
 loadEnv();
-import fs from 'fs';, {
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2024-06-20",
 });
 const PORT = parseInt(process.env.PORT || '4000', 10);
