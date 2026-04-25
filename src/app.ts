@@ -7,10 +7,11 @@
 import http from 'http';
 import https from 'https';
 import { URL } from 'url';
-
-// ── Load .env manually (no dotenv package needed) ──────────────
 import fs from 'fs';
 import path from 'path';
+import Stripe from "stripe";
+
+// ── Load .env manually (no dotenv package needed) ──────────────
 
 function loadEnv() {
   const envPath = path.join(__dirname, '..', '.env');
@@ -27,7 +28,9 @@ function loadEnv() {
   }
 }
 loadEnv();
-
+import fs from 'fs';, {
+  apiVersion: "2024-06-20",
+});
 const PORT = parseInt(process.env.PORT || '4000', 10);
 
 // ── Tiny router ────────────────────────────────────────────────
@@ -196,6 +199,36 @@ const router = new Router();
 // ── Health ────────────────────────────────────────────────────
 router.get('/health', (_req, res) => {
   res.json({ status: 'ok', ts: new Date().toISOString(), version: '1.0.0' });
+});
+router.post('/api/stripe/checkout', async (req, res) => {
+  try {
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ["card"],
+      mode: "subscription",
+      line_items: [
+        {
+          price_data: {
+            currency: "usd",
+            product_data: {
+              name: "Test Subscription",
+            },
+            unit_amount: 1000,
+            recurring: {
+              interval: "month",
+            },
+          },
+          quantity: 1,
+        },
+      ],
+      success_url: "https://example.com/success",
+      cancel_url: "https://example.com/cancel",
+    });
+
+    res.json({ url: session.url });
+
+  } catch (err) {
+    res.json({ error: "Stripe error" }, 500);
+  }
 });
 
 // ── Auth: Register ────────────────────────────────────────────
