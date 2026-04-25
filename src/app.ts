@@ -200,7 +200,7 @@ const router = new Router();
 router.get('/health', (_req, res) => {
   res.json({ status: 'ok', ts: new Date().toISOString(), version: '1.0.0' });
 });
-router.post('/api/stripe/checkout', async (req, res) => {
+router.get('/api/stripe/checkout', async (req, res) => {
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
